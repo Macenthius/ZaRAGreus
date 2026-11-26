@@ -1,0 +1,35 @@
+{
+  "note": "Same 30 answerable questions as evaluate.py; gold = chunk from a gold chapter file.",
+  "results": [
+    {
+      "target_tokens": 200,
+      "chunks": 1842,
+      "mean_words": 120.0,
+      "hybrid_hit@3": 0.967,
+      "hybrid_mrr@10": 0.881,
+      "dense_hit@3": 1.0,
+      "dense_mrr@10": 0.967,
+      "build_and_eval_s": 269.6
+    },
+    {
+      "target_tokens": 350,
+      "chunks": 1096,
+      "mean_words": 196.4,
+      "hybrid_hit@3": 0.933,
+      "hybrid_mrr@10": 0.879,
+      "dense_hit@3": 1.0,
+      "dense_mrr@10": 0.983,
+      "build_and_eval_s": 162.9
+    },
+    {
+      "target_tokens": 500,
+      "chunks": 817,
+      "mean_words": 257.4,
+      "hybrid_hit@3": 0.933,
+      "hybrid_mrr@10": 0.852,
+      "dense_hit@3": 0.933,
+      "dense_mrr@10": 0.893,
+      "build_and_eval_s": 140.6
+    }
+  ]
+}

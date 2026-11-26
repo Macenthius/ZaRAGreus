@@ -1,0 +1,25 @@
+cachedir: .pytest_cache
+rootdir: D:\Main\University\Final Year\IBM AI Analytics\ZaRAGreus\rust-book-rag
+plugins: anyio-4.16.0
+collecting ... collected 18 items
+
+tests/test_chunking.py::test_code_fences_never_split PASSED              [  5%]
+tests/test_chunking.py::test_headings_inside_code_are_ignored PASSED     [ 11%]
+tests/test_chunking.py::test_overlap_present PASSED                      [ 16%]
+tests/test_chunking.py::test_metadata_complete_and_heading_prepended PASSED [ 22%]
+tests/test_chunking.py::test_oversized_code_block_is_split_and_refenced PASSED [ 27%]
+tests/test_ingest.py::test_anchor_include_resolved PASSED                [ 33%]
+tests/test_ingest.py::test_full_include_and_line_range PASSED            [ 38%]
+tests/test_ingest.py::test_missing_include_dropped PASSED                [ 44%]
+tests/test_ingest.py::test_html_cleaned_filename_kept PASSED             [ 50%]
+tests/test_ingest.py::test_metadata PASSED                               [ 55%]
+tests/test_pipeline.py::test_answer_uses_context_and_cites PASSED        [ 61%]
+tests/test_pipeline.py::test_gate_refuses_without_calling_llm PASSED     [ 66%]
+tests/test_pipeline.py::test_llm_refusal_detected PASSED                 [ 72%]
+tests/test_pipeline.py::test_fallback_when_llm_down PASSED               [ 77%]
+tests/test_pipeline.py::test_stream_fallback_when_llm_down PASSED        [ 83%]
+tests/test_retrieval.py::test_rrf_ordering_toy_example PASSED            [ 88%]
+tests/test_retrieval.py::test_rrf_single_list_preserves_order PASSED     [ 94%]
+tests/test_retrieval.py::test_tokenizer_keeps_rust_identifiers PASSED    [100%]
+
+============================= 18 passed in 2.87s ==============================

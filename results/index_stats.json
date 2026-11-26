@@ -1,0 +1,8 @@
+{
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "embedding_dim": 384,
+  "chunk_count": 1096,
+  "embedding_time_s": 183.3,
+  "total_build_time_s": 196.5,
+  "vector_store": "chromadb PersistentClient (cosine)"
+}
