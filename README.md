@@ -203,7 +203,7 @@ up answered "What are the three rules of ownership?" correctly, with 4 sources, 
 
 **LLM-assisted review** (`results/llm_review.csv`, summary in `results/llm_review_summary.json`):
 
-> **Graded by Claude (LLM-as-judge), not by a human. The author spot-checked N rows.**
+> **Graded by Claude (LLM-as-judge), not by a human. The author spot-checked 4 rows (q05, q08, q29 and one further row) and changed no scores.**
 
 The 12 answerable questions sampled with seed 42 were graded on the qwen2.5:0.5b answers, against the 4 chunks
 actually retrieved for each one. `correct`: 1 = right and answers the question, 0.5 = partly right or missing a

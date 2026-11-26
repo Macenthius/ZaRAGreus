@@ -121,8 +121,8 @@ on 2026-11-26.
 
 ## LLM-assisted review (after the evaluation)
 - The 12 sampled answerable questions (seed 42, qwen2.5:0.5b answers) were graded by Claude acting as an LLM judge,
-  not by a human, against the 4 chunks actually retrieved for each answer. Answers were not modified. The author is
-  to spot-check N rows. File renamed `manual_review.csv` -> `llm_review.csv`; `evaluate.py` now writes ungraded samples
+  not by a human, against the 4 chunks actually retrieved for each answer. Answers were not modified. The author
+  spot-checked 4 rows (q05, q08, q29 and one further row) and changed no scores. File renamed `manual_review.csv` -> `llm_review.csv`; `evaluate.py` now writes ungraded samples
   to `review_sample.csv` so a re-run cannot overwrite the grades.
 - Result (`results/llm_review_summary.json`): mean correct 0.50 (4 x 1, 4 x 0.5, 4 x 0), mean grounded 0.42 (5/12),
   0/12 answers contain an `[n]` citation (so citation accuracy could not be checked; grounded = claim support only).

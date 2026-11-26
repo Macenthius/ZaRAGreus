@@ -1,6 +1,6 @@
 {
   "reviewer": "Claude (LLM-as-judge), not a human",
-  "author_spot_checked_rows": "N",
+  "author_spot_checked_rows": 4,
   "model_under_review": "qwen2.5:0.5b (hybrid retrieval, top_k=4)",
   "n_rows": 12,
   "sample": "12 answerable questions sampled with random.Random(42) by scripts/evaluate.py",
@@ -14,5 +14,6 @@
   "count_correct_1": 4,
   "count_correct_0_5": 4,
   "count_correct_0": 4,
-  "answers_citing": []
+  "answers_citing": [],
+  "author_spot_check_detail": "q05, q08, q29 and one further row; no scores changed"
 }
