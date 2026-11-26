@@ -1,0 +1,11 @@
+exceptions after load: []
+sidebar success: ['Ollama OK - `qwen2.5:0.5b`']
+sidebar errors: []
+exceptions after question: []
+QUESTION: What are the three rules of ownership?
+ANSWER (streamed, rendered): - Each value in Rust has an _owner_.
+- There can only be one owner at a time.
+- When the owner goes out of scope, the value will be dropped.
+SOURCES: ['**[1] Understanding Ownership** - Understanding Ownership > What Is Ownership? > Ownership Rules  ', '**[2] Understanding Ownership** - Understanding Ownership > What Is Ownership?  ', '**[3] Understanding Ownership** - Understanding Ownership > What Is Ownership? > The String Type  ', '**[4] Understanding Ownership** - Understanding Ownership > References and Borrowing > The Rules of References']
+CAPTIONS: ['Retrieve: 98 ms | Generate: 2276 ms | mode: hybrid | best dense: 0.751', 'Relevance gate: refuse if best dense similarity < 0.70']
+errors: []

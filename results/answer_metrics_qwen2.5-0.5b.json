@@ -1,0 +1,19 @@
+{
+  "model": "qwen2.5:0.5b",
+  "retrieval_mode": "hybrid",
+  "top_k": 4,
+  "relevance_threshold": 0.7,
+  "n_answerable": 30,
+  "n_unanswerable": 10,
+  "key_fact_coverage_mean": 0.6,
+  "key_fact_coverage_mean_non_refused": 0.6,
+  "citation_rate_answerable_non_refused": 0.033,
+  "correct_refusal_rate": 0.9,
+  "correct_refusals_by_gate": 9,
+  "correct_refusals_by_llm": 0,
+  "false_refusal_rate": 0.0,
+  "fallback_used": 0,
+  "mean_retrieve_ms": 89.2,
+  "mean_generate_ms_when_generated": 3042.0,
+  "median_generate_ms_when_generated": 2825.3
+}

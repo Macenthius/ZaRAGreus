@@ -1,0 +1,2329 @@
+{
+  "metrics": {
+    "model": "qwen2.5:0.5b",
+    "retrieval_mode": "hybrid",
+    "top_k": 4,
+    "relevance_threshold": 0.7,
+    "n_answerable": 30,
+    "n_unanswerable": 10,
+    "key_fact_coverage_mean": 0.6,
+    "key_fact_coverage_mean_non_refused": 0.6,
+    "citation_rate_answerable_non_refused": 0.033,
+    "correct_refusal_rate": 0.9,
+    "correct_refusals_by_gate": 9,
+    "correct_refusals_by_llm": 0,
+    "false_refusal_rate": 0.0,
+    "fallback_used": 0,
+    "mean_retrieve_ms": 89.2,
+    "mean_generate_ms_when_generated": 3042.0,
+    "median_generate_ms_when_generated": 2825.3
+  },
+  "records": [
+    {
+      "id": "q01",
+      "question": "What are the three rules of ownership in Rust?",
+      "answerable": true,
+      "answer": "- Each value in Rust has an _owner_.\n- There can only be one owner at a time.\n- When the owner goes out of scope, the value will be dropped.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8474,
+      "key_facts": [
+        "owner",
+        "one owner",
+        "out of scope",
+        "dropped"
+      ],
+      "key_facts_found": [
+        "owner",
+        "one owner",
+        "out of scope",
+        "dropped"
+      ],
+      "key_fact_coverage": 1.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch04-01-what-is-ownership.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch04-01-what-is-ownership::005::43e548",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Ownership Rules",
+          "dense": 0.8474,
+          "bm25": 14.495,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::000::7a9bba",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership?",
+          "dense": 0.846,
+          "bm25": 13.644,
+          "fused": 0.03226
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::008::a85218",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > The String Type",
+          "dense": 0.7606,
+          "bm25": 10.935,
+          "fused": 0.03008
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::022::fed145",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Ownership and Functions",
+          "dense": 0.7369,
+          "bm25": 9.671,
+          "fused": 0.02744
+        }
+      ],
+      "retrieve_ms": 35.8,
+      "generate_ms": 2463.3
+    },
+    {
+      "id": "q02",
+      "question": "What happens to s1 after `let s2 = s1;` when s1 is a String?",
+      "answerable": true,
+      "answer": "s1 is no longer valid after `let s2 = s1;` because `s1` and `s2` are pointing to the same location in memory.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7495,
+      "key_facts": [
+        "move",
+        "s1",
+        "no longer valid"
+      ],
+      "key_facts_found": [
+        "s1",
+        "no longer valid"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch04-01-what-is-ownership.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch04-01-what-is-ownership::015::11a178",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Memory and Allocation > Variables and Data Interacting with Move",
+          "dense": 0.7495,
+          "bm25": 45.64,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch08-02-strings::006::ea0237",
+          "file": "ch08-02-strings.md",
+          "heading_path": "Common Collections > Storing UTF-8 Encoded Text with Strings > Updating a String > Concatenating with + or format!",
+          "dense": 0.7285,
+          "bm25": 39.321,
+          "fused": 0.03102
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::014::e98a83",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Memory and Allocation > Variables and Data Interacting with Move",
+          "dense": 0.7311,
+          "bm25": 36.454,
+          "fused": 0.03037
+        },
+        {
+          "chunk_id": "ch08-02-strings::007::098569",
+          "file": "ch08-02-strings.md",
+          "heading_path": "Common Collections > Storing UTF-8 Encoded Text with Strings > Updating a String > Concatenating with + or format!",
+          "dense": 0.722,
+          "bm25": 38.959,
+          "fused": 0.03033
+        }
+      ],
+      "retrieve_ms": 230.3,
+      "generate_ms": 2426.9
+    },
+    {
+      "id": "q03",
+      "question": "What is the difference between types that implement Copy and types like String when assigned to another variable?",
+      "answerable": true,
+      "answer": "Types that implement the `Copy` trait are those that can be trivially copied, while types like `String` cannot. When a type implements the `Copy` trait, it means that variables that use it do not move, but rather are trivially copied, making them still valid after assignment to another variable.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7854,
+      "key_facts": [
+        "copy",
+        "stack",
+        "clone"
+      ],
+      "key_facts_found": [
+        "copy"
+      ],
+      "key_fact_coverage": 0.333,
+      "has_citation": false,
+      "gold_files": [
+        "ch04-01-what-is-ownership.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch04-01-what-is-ownership::021::12c0fc",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Memory and Allocation > Stack-Only Data: Copy",
+          "dense": 0.7854,
+          "bm25": 22.414,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::014::e98a83",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Memory and Allocation > Variables and Data Interacting with Move",
+          "dense": 0.7719,
+          "bm25": 21.511,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::009::97e667",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > The String Type",
+          "dense": 0.7767,
+          "bm25": 16.267,
+          "fused": 0.03175
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::020::caf200",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Memory and Allocation > Stack-Only Data: Copy",
+          "dense": 0.7697,
+          "bm25": 21.348,
+          "fused": 0.0315
+        }
+      ],
+      "retrieve_ms": 109.6,
+      "generate_ms": 2615.7
+    },
+    {
+      "id": "q04",
+      "question": "What are the rules of references in Rust?",
+      "answerable": true,
+      "answer": "The rules of references in Rust are called the `Lifetime Elision Rules`. These rules are a set of particular cases that the compiler will consider, and if your code fits these cases, you don't need to write the lifetimes explicitly.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.817,
+      "key_facts": [
+        "one mutable reference",
+        "immutable references",
+        "valid"
+      ],
+      "key_facts_found": [],
+      "key_fact_coverage": 0.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch04-02-references-and-borrowing.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::019::2335fd",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Lifetime Elision",
+          "dense": 0.7983,
+          "bm25": 12.028,
+          "fused": 0.03151
+        },
+        {
+          "chunk_id": "ch15-05-interior-mutability::001::6c3676",
+          "file": "ch15-05-interior-mutability.md",
+          "heading_path": "Smart Pointers > RefCell<T> and the Interior Mutability Pattern > Enforcing Borrowing Rules at Runtime",
+          "dense": 0.7952,
+          "bm25": 13.04,
+          "fused": 0.03089
+        },
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::020::d5dfc4",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Lifetime Elision",
+          "dense": 0.7767,
+          "bm25": 9.666,
+          "fused": 0.02743
+        },
+        {
+          "chunk_id": "ch15-00-smart-pointers::001::64dcc0",
+          "file": "ch15-00-smart-pointers.md",
+          "heading_path": "Smart Pointers",
+          "dense": 0.7792,
+          "bm25": 7.765,
+          "fused": 0.02597
+        }
+      ],
+      "retrieve_ms": 140.7,
+      "generate_ms": 2515.3
+    },
+    {
+      "id": "q05",
+      "question": "How does Rust prevent dangling references?",
+      "answerable": true,
+      "answer": "Rust prevents dangling references by ensuring that references are always valid. If a reference is created outside of its intended scope, Rust will automatically return a valid reference to the data it references. This prevents the reference from going out of scope before the data it references is dropped.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8917,
+      "key_facts": [
+        "dangling",
+        "compiler",
+        "out of scope"
+      ],
+      "key_facts_found": [
+        "dangling",
+        "out of scope"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch04-02-references-and-borrowing.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch04-02-references-and-borrowing::007::8ff69c",
+          "file": "ch04-02-references-and-borrowing.md",
+          "heading_path": "Understanding Ownership > References and Borrowing > Dangling References",
+          "dense": 0.8917,
+          "bm25": 13.024,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::001::450f1f",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Dangling References",
+          "dense": 0.8576,
+          "bm25": 15.599,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch04-02-references-and-borrowing::008::7ab6b9",
+          "file": "ch04-02-references-and-borrowing.md",
+          "heading_path": "Understanding Ownership > References and Borrowing > Dangling References",
+          "dense": 0.8368,
+          "bm25": 9.737,
+          "fused": 0.03058
+        },
+        {
+          "chunk_id": "ch20-01-unsafe-rust::003::ca486b",
+          "file": "ch20-01-unsafe-rust.md",
+          "heading_path": "Advanced Features > Unsafe Rust > Dereferencing a Raw Pointer",
+          "dense": 0.8177,
+          "bm25": 12.461,
+          "fused": 0.03055
+        }
+      ],
+      "retrieve_ms": 143.2,
+      "generate_ms": 2716.7
+    },
+    {
+      "id": "q06",
+      "question": "What is a string slice and what is its type?",
+      "answerable": true,
+      "answer": "A string slice is a reference to a contiguous sequence of the elements of a `String`. It looks like this:\n\n```rust\nlet s = String::from(\"hello world\");\n\nlet hello = &s[0..5];\nlet world = &s[6..11];\n```\n\nThe type of a string slice is `&str`.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.851,
+      "key_facts": [
+        "&str",
+        "reference",
+        "part of a string"
+      ],
+      "key_facts_found": [
+        "&str",
+        "reference"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch04-03-slices.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch04-03-slices::004::75f62b",
+          "file": "ch04-03-slices.md",
+          "heading_path": "Understanding Ownership > The Slice Type > String Slices",
+          "dense": 0.851,
+          "bm25": 9.378,
+          "fused": 0.03154
+        },
+        {
+          "chunk_id": "ch04-03-slices::005::98fdc9",
+          "file": "ch04-03-slices.md",
+          "heading_path": "Understanding Ownership > The Slice Type > String Slices",
+          "dense": 0.8304,
+          "bm25": 9.664,
+          "fused": 0.03151
+        },
+        {
+          "chunk_id": "ch04-03-slices::010::bb12d5",
+          "file": "ch04-03-slices.md",
+          "heading_path": "Understanding Ownership > The Slice Type > Other Slices",
+          "dense": 0.813,
+          "bm25": 9.331,
+          "fused": 0.0308
+        },
+        {
+          "chunk_id": "ch04-03-slices::000::15e0c7",
+          "file": "ch04-03-slices.md",
+          "heading_path": "Understanding Ownership > The Slice Type",
+          "dense": 0.7923,
+          "bm25": 9.748,
+          "fused": 0.03078
+        }
+      ],
+      "retrieve_ms": 193.5,
+      "generate_ms": 2602.6
+    },
+    {
+      "id": "q07",
+      "question": "What is struct update syntax?",
+      "answerable": true,
+      "answer": "Using struct update syntax, we can create a new instance of a struct that includes most of the values from another instance of the same type, but changes some of them.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.829,
+      "key_facts": [
+        "..",
+        "remaining fields",
+        "instance"
+      ],
+      "key_facts_found": [
+        "instance"
+      ],
+      "key_fact_coverage": 0.333,
+      "has_citation": false,
+      "gold_files": [
+        "ch05-01-defining-structs.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch05-01-defining-structs::004::153570",
+          "file": "ch05-01-defining-structs.md",
+          "heading_path": "Using Structs to Structure Related Data > Defining and Instantiating Structs > Creating Instances with Struct Update Syntax",
+          "dense": 0.829,
+          "bm25": 13.656,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch05-01-defining-structs::005::f559db",
+          "file": "ch05-01-defining-structs.md",
+          "heading_path": "Using Structs to Structure Related Data > Defining and Instantiating Structs > Creating Instances with Struct Update Syntax",
+          "dense": 0.8009,
+          "bm25": 10.445,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch05-03-method-syntax::001::5bcf95",
+          "file": "ch05-03-method-syntax.md",
+          "heading_path": "Using Structs to Structure Related Data > Methods > Method Syntax",
+          "dense": 0.7382,
+          "bm25": 5.655,
+          "fused": 0.02947
+        },
+        {
+          "chunk_id": "ch05-02-example-structs::007::3d8a3e",
+          "file": "ch05-02-example-structs.md",
+          "heading_path": "Using Structs to Structure Related Data > An Example Program Using Structs > Adding Functionality with Derived Traits",
+          "dense": 0.7326,
+          "bm25": 5.654,
+          "fused": 0.02859
+        }
+      ],
+      "retrieve_ms": 101.5,
+      "generate_ms": 2312.3
+    },
+    {
+      "id": "q08",
+      "question": "What is the difference between a method and an associated function?",
+      "answerable": true,
+      "answer": "A method is a function that takes a parameter and returns a value. An associated function is a function that is not a method and is associated with a type.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7528,
+      "key_facts": [
+        "self",
+        "::",
+        "new"
+      ],
+      "key_facts_found": [],
+      "key_fact_coverage": 0.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch05-03-method-syntax.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch20-02-advanced-traits::010::f38bce",
+          "file": "ch20-02-advanced-traits.md",
+          "heading_path": "Advanced Features > Advanced Traits > Disambiguating Between Identically Named Methods",
+          "dense": 0.6848,
+          "bm25": 10.299,
+          "fused": 0.03175
+        },
+        {
+          "chunk_id": "ch20-02-advanced-traits::002::9be2dc",
+          "file": "ch20-02-advanced-traits.md",
+          "heading_path": "Advanced Features > Advanced Traits > Defining Traits with Associated Types",
+          "dense": 0.6539,
+          "bm25": 14.217,
+          "fused": 0.03048
+        },
+        {
+          "chunk_id": "ch20-02-advanced-traits::003::795e8e",
+          "file": "ch20-02-advanced-traits.md",
+          "heading_path": "Advanced Features > Advanced Traits > Defining Traits with Associated Types",
+          "dense": 0.6621,
+          "bm25": 7.156,
+          "fused": 0.02899
+        },
+        {
+          "chunk_id": "ch20-05-macros::001::c53a22",
+          "file": "ch20-05-macros.md",
+          "heading_path": "Advanced Features > Macros > The Difference Between Macros and Functions",
+          "dense": 0.6436,
+          "bm25": 8.402,
+          "fused": 0.02854
+        }
+      ],
+      "retrieve_ms": 19.0,
+      "generate_ms": 2545.0
+    },
+    {
+      "id": "q09",
+      "question": "Why does Rust use Option<T> instead of null?",
+      "answerable": true,
+      "answer": "To use Option<T> instead of null, Rust uses the type `Option<T>` to represent a value that can either be present or absent. This allows the compiler to check whether the value is valid and handle cases where the value is null.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8463,
+      "key_facts": [
+        "some",
+        "none",
+        "null"
+      ],
+      "key_facts_found": [
+        "null"
+      ],
+      "key_fact_coverage": 0.333,
+      "has_citation": false,
+      "gold_files": [
+        "ch06-01-defining-an-enum.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch06-01-defining-an-enum::012::6a4e09",
+          "file": "ch06-01-defining-an-enum.md",
+          "heading_path": "Enums and Pattern Matching > Defining an Enum > The Option Enum",
+          "dense": 0.8463,
+          "bm25": 26.829,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch06-01-defining-an-enum::010::60570e",
+          "file": "ch06-01-defining-an-enum.md",
+          "heading_path": "Enums and Pattern Matching > Defining an Enum > The Option Enum",
+          "dense": 0.8205,
+          "bm25": 23.338,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch06-01-defining-an-enum::008::8a644d",
+          "file": "ch06-01-defining-an-enum.md",
+          "heading_path": "Enums and Pattern Matching > Defining an Enum > The Option Enum",
+          "dense": 0.8045,
+          "bm25": 22.132,
+          "fused": 0.03126
+        },
+        {
+          "chunk_id": "ch06-01-defining-an-enum::007::480e35",
+          "file": "ch06-01-defining-an-enum.md",
+          "heading_path": "Enums and Pattern Matching > Defining an Enum > The Option Enum",
+          "dense": 0.8242,
+          "bm25": 15.519,
+          "fused": 0.03083
+        }
+      ],
+      "retrieve_ms": 114.4,
+      "generate_ms": 2636.5
+    },
+    {
+      "id": "q10",
+      "question": "What does it mean that match arms must be exhaustive?",
+      "answerable": true,
+      "answer": "The arms of a `match` expression must be exhaustive in the sense that all possibilities for the value in the `match` expression must be accounted for.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7082,
+      "key_facts": [
+        "exhaustive",
+        "all possibilities",
+        "none"
+      ],
+      "key_facts_found": [
+        "exhaustive",
+        "all possibilities"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch06-02-match.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch19-01-all-the-places-for-patterns::001::e18448",
+          "file": "ch19-01-all-the-places-for-patterns.md",
+          "heading_path": "Patterns and Matching > All the Places Patterns Can Be Used > match Arms",
+          "dense": 0.6622,
+          "bm25": 16.9,
+          "fused": 0.03227
+        },
+        {
+          "chunk_id": "ch06-02-match::007::a20bb9",
+          "file": "ch06-02-match.md",
+          "heading_path": "Enums and Pattern Matching > The match Control Flow Construct > Matches Are Exhaustive",
+          "dense": 0.6701,
+          "bm25": 15.996,
+          "fused": 0.03226
+        },
+        {
+          "chunk_id": "ch06-02-match::008::a0d7c5",
+          "file": "ch06-02-match.md",
+          "heading_path": "Enums and Pattern Matching > The match Control Flow Construct > Matches Are Exhaustive",
+          "dense": 0.7082,
+          "bm25": 12.415,
+          "fused": 0.03202
+        },
+        {
+          "chunk_id": "ch06-02-match::010::48a6d2",
+          "file": "ch06-02-match.md",
+          "heading_path": "Enums and Pattern Matching > The match Control Flow Construct > Catch-All Patterns and the _ Placeholder",
+          "dense": 0.6159,
+          "bm25": 15.925,
+          "fused": 0.0308
+        }
+      ],
+      "retrieve_ms": 101.3,
+      "generate_ms": 2496.1
+    },
+    {
+      "id": "q11",
+      "question": "When should I use if let instead of match?",
+      "answerable": true,
+      "answer": "If you want to handle values that match one pattern while ignoring the rest, you should use `if let`.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8101,
+      "key_facts": [
+        "if let",
+        "one pattern",
+        "less"
+      ],
+      "key_facts_found": [
+        "if let",
+        "one pattern"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch06-03-if-let.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch06-03-if-let::002::194775",
+          "file": "ch06-03-if-let.md",
+          "heading_path": "Enums and Pattern Matching > Concise Control Flow with if let and let...else",
+          "dense": 0.7737,
+          "bm25": 9.451,
+          "fused": 0.03128
+        },
+        {
+          "chunk_id": "ch06-03-if-let::000::bbdeb4",
+          "file": "ch06-03-if-let.md",
+          "heading_path": "Enums and Pattern Matching > Concise Control Flow with if let and let...else",
+          "dense": 0.8061,
+          "bm25": 8.017,
+          "fused": 0.03062
+        },
+        {
+          "chunk_id": "ch06-03-if-let::003::070b41",
+          "file": "ch06-03-if-let.md",
+          "heading_path": "Enums and Pattern Matching > Staying on the \u201cHappy Path\u201d with let...else",
+          "dense": 0.7582,
+          "bm25": 8.287,
+          "fused": 0.02963
+        },
+        {
+          "chunk_id": "ch19-02-refutability::003::c7e188",
+          "file": "ch19-02-refutability.md",
+          "heading_path": "Patterns and Matching > Refutability: Whether a Pattern Might Fail to Match",
+          "dense": 0.74,
+          "bm25": 7.529,
+          "fused": 0.0278
+        }
+      ],
+      "retrieve_ms": 88.0,
+      "generate_ms": 2506.9
+    },
+    {
+      "id": "q12",
+      "question": "What is the difference between a binary crate and a library crate?",
+      "answerable": true,
+      "answer": "A binary crate is a program that can be compiled to an executable and run, while a library crate is a program that defines functionality intended to be shared with multiple projects.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7851,
+      "key_facts": [
+        "main",
+        "executable",
+        "library"
+      ],
+      "key_facts_found": [
+        "executable",
+        "library"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch07-01-packages-and-crates.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree::009::1cc8eb",
+          "file": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "heading_path": "Packages, Crates, and Modules > Paths for Referring to an Item in the Module Tree > Exposing Paths with the pub Keyword",
+          "dense": 0.7769,
+          "bm25": 18.352,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch07-01-packages-and-crates::001::0e5613",
+          "file": "ch07-01-packages-and-crates.md",
+          "heading_path": "Packages, Crates, and Modules > Packages and Crates",
+          "dense": 0.7424,
+          "bm25": 17.501,
+          "fused": 0.0315
+        },
+        {
+          "chunk_id": "ch07-01-packages-and-crates::000::72b387",
+          "file": "ch07-01-packages-and-crates.md",
+          "heading_path": "Packages, Crates, and Modules > Packages and Crates",
+          "dense": 0.7851,
+          "bm25": 15.572,
+          "fused": 0.0311
+        },
+        {
+          "chunk_id": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree::008::b1478b",
+          "file": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "heading_path": "Packages, Crates, and Modules > Paths for Referring to an Item in the Module Tree > Exposing Paths with the pub Keyword",
+          "dense": 0.7276,
+          "bm25": 17.563,
+          "fused": 0.03083
+        }
+      ],
+      "retrieve_ms": 117.9,
+      "generate_ms": 2561.4
+    },
+    {
+      "id": "q13",
+      "question": "Are struct fields public when the struct is marked pub?",
+      "answerable": true,
+      "answer": "We can make each field public or not on a case-by-case basis. In Listing 7-9, we\u2019ve defined a public `back_of_house::Breakfast` struct with a public `toast` field but a private `seasonal_fruit` field. This models the case in a restaurant where the customer can pick the type of bread that comes with a meal, but the chef decides which fruit accompanies the meal based on what\u2019s in season and in stock. The available fruit changes quickly, so customers can\u2019t choose the fruit or even see which fruit they\u2019ll get.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8321,
+      "key_facts": [
+        "pub",
+        "private",
+        "field"
+      ],
+      "key_facts_found": [
+        "pub",
+        "private",
+        "field"
+      ],
+      "key_fact_coverage": 1.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree::012::d2074c",
+          "file": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "heading_path": "Packages, Crates, and Modules > Paths for Referring to an Item in the Module Tree > Making Structs and Enums Public",
+          "dense": 0.8321,
+          "bm25": 21.046,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree::014::834818",
+          "file": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "heading_path": "Packages, Crates, and Modules > Paths for Referring to an Item in the Module Tree > Making Structs and Enums Public",
+          "dense": 0.8207,
+          "bm25": 18.998,
+          "fused": 0.03175
+        },
+        {
+          "chunk_id": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree::013::451dc0",
+          "file": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "heading_path": "Packages, Crates, and Modules > Paths for Referring to an Item in the Module Tree > Making Structs and Enums Public",
+          "dense": 0.7818,
+          "bm25": 19.399,
+          "fused": 0.03175
+        },
+        {
+          "chunk_id": "ch05-03-method-syntax::004::8a1880",
+          "file": "ch05-03-method-syntax.md",
+          "heading_path": "Using Structs to Structure Related Data > Methods > Method Syntax",
+          "dense": 0.7344,
+          "bm25": 16.155,
+          "fused": 0.02854
+        }
+      ],
+      "retrieve_ms": 133.4,
+      "generate_ms": 3357.7
+    },
+    {
+      "id": "q14",
+      "question": "How do I create a vector and add elements to it?",
+      "answerable": true,
+      "answer": "To create a vector and add elements to it, you can use the `push` method. Here's an example:\n\n```rust\nlet mut v = Vec::new();\n\nv.push(5);\nv.push(6);\nv.push(7);\nv.push(8);\n```\n\nThis code creates a new vector `v` and adds three elements to it: `5`, `6`, and `7`.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7529,
+      "key_facts": [
+        "vec::new",
+        "vec!",
+        "push"
+      ],
+      "key_facts_found": [
+        "vec::new",
+        "push"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch08-01-vectors.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch08-01-vectors::002::baca2b",
+          "file": "ch08-01-vectors.md",
+          "heading_path": "Common Collections > Storing Lists of Values with Vectors > Updating a Vector",
+          "dense": 0.7296,
+          "bm25": 13.896,
+          "fused": 0.03227
+        },
+        {
+          "chunk_id": "ch08-01-vectors::001::de9d49",
+          "file": "ch08-01-vectors.md",
+          "heading_path": "Common Collections > Storing Lists of Values with Vectors > Creating a New Vector",
+          "dense": 0.7379,
+          "bm25": 11.723,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch08-01-vectors::005::312f7a",
+          "file": "ch08-01-vectors.md",
+          "heading_path": "Common Collections > Storing Lists of Values with Vectors > Reading Elements of Vectors",
+          "dense": 0.7279,
+          "bm25": 10.762,
+          "fused": 0.03101
+        },
+        {
+          "chunk_id": "ch18-02-trait-objects::000::fe8128",
+          "file": "ch18-02-trait-objects.md",
+          "heading_path": "Object Oriented Programming Features > Using Trait Objects to Abstract over Shared Behavior",
+          "dense": 0.6873,
+          "bm25": 11.118,
+          "fused": 0.03012
+        }
+      ],
+      "retrieve_ms": 75.6,
+      "generate_ms": 3003.1
+    },
+    {
+      "id": "q15",
+      "question": "Why can't I index into a String with s[0]?",
+      "answerable": true,
+      "answer": "In Rust, when you try to access a character in a string using indexing syntax, Rust automatically converts the index into a `usize` type, which is a range of `usize` values. This means that the compiler will check if the index is valid and within the bounds of the string. If the index is out of bounds, Rust will panic and cause the program to crash. This is why you can't use `s[0]` to access a character in a string.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7853,
+      "key_facts": [
+        "utf-8",
+        "bytes",
+        "index"
+      ],
+      "key_facts_found": [
+        "index"
+      ],
+      "key_fact_coverage": 0.333,
+      "has_citation": true,
+      "gold_files": [
+        "ch08-02-strings.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch08-02-strings::014::9e43e5",
+          "file": "ch08-02-strings.md",
+          "heading_path": "Common Collections > Storing UTF-8 Encoded Text with Strings > Slicing Strings",
+          "dense": 0.7853,
+          "bm25": 11.325,
+          "fused": 0.03178
+        },
+        {
+          "chunk_id": "ch08-02-strings::009::ab4da0",
+          "file": "ch08-02-strings.md",
+          "heading_path": "Common Collections > Storing UTF-8 Encoded Text with Strings > Indexing into Strings",
+          "dense": 0.7847,
+          "bm25": 11.31,
+          "fused": 0.03128
+        },
+        {
+          "chunk_id": "ch04-03-slices::006::b7df9b",
+          "file": "ch04-03-slices.md",
+          "heading_path": "Understanding Ownership > The Slice Type > String Slices",
+          "dense": 0.7174,
+          "bm25": 13.037,
+          "fused": 0.03002
+        },
+        {
+          "chunk_id": "ch04-03-slices::005::98fdc9",
+          "file": "ch04-03-slices.md",
+          "heading_path": "Understanding Ownership > The Slice Type > String Slices",
+          "dense": 0.7213,
+          "bm25": 10.647,
+          "fused": 0.0292
+        }
+      ],
+      "retrieve_ms": 111.9,
+      "generate_ms": 3272.7
+    },
+    {
+      "id": "q16",
+      "question": "How do I insert a value into a HashMap only if the key has no value?",
+      "answerable": true,
+      "answer": "To insert a value into a HashMap only if the key has no value, you can use the `or_insert` method on the `Entry` enum. This method returns a mutable reference to the value for the corresponding `Entry` key if that key exists, and if not, it inserts the parameter as the new value for this key and returns a mutable reference to the new value. This technique is much cleaner than writing the logic ourselves and, in addition, plays more nicely with the borrow checker.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8181,
+      "key_facts": [
+        "entry",
+        "or_insert"
+      ],
+      "key_facts_found": [
+        "entry",
+        "or_insert"
+      ],
+      "key_fact_coverage": 1.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch08-03-hash-maps.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch08-03-hash-maps::006::926d60",
+          "file": "ch08-03-hash-maps.md",
+          "heading_path": "Common Collections > Storing Keys with Associated Values in Hash Maps > Updating a Hash Map > Adding a Key and Value Only If a Key Isn\u2019t Present",
+          "dense": 0.8181,
+          "bm25": 25.555,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch08-03-hash-maps::005::466715",
+          "file": "ch08-03-hash-maps.md",
+          "heading_path": "Common Collections > Storing Keys with Associated Values in Hash Maps > Updating a Hash Map > Overwriting a Value",
+          "dense": 0.7735,
+          "bm25": 28.255,
+          "fused": 0.03227
+        },
+        {
+          "chunk_id": "ch08-03-hash-maps::007::f9ac55",
+          "file": "ch08-03-hash-maps.md",
+          "heading_path": "Common Collections > Storing Keys with Associated Values in Hash Maps > Updating a Hash Map > Adding a Key and Value Only If a Key Isn\u2019t Present",
+          "dense": 0.7992,
+          "bm25": 15.491,
+          "fused": 0.03151
+        },
+        {
+          "chunk_id": "ch08-03-hash-maps::002::d1b3f4",
+          "file": "ch08-03-hash-maps.md",
+          "heading_path": "Common Collections > Storing Keys with Associated Values in Hash Maps > Accessing Values in a Hash Map",
+          "dense": 0.7401,
+          "bm25": 23.743,
+          "fused": 0.03126
+        }
+      ],
+      "retrieve_ms": 109.8,
+      "generate_ms": 3375.3
+    },
+    {
+      "id": "q17",
+      "question": "What is the difference between unwinding and aborting when a panic occurs?",
+      "answerable": true,
+      "answer": "When a panic occurs, the program starts unwinding, which means Rust walks back up the stack and cleans up the data from each function it encounters. However, walking back and cleaning up is a lot of work. Rust therefore allows you to choose the alternative of immediately aborting, which ends the program without cleaning up.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7175,
+      "key_facts": [
+        "unwinding",
+        "abort",
+        "cleans up",
+        "cargo.toml"
+      ],
+      "key_facts_found": [
+        "unwinding",
+        "abort",
+        "cleans up"
+      ],
+      "key_fact_coverage": 0.75,
+      "has_citation": false,
+      "gold_files": [
+        "ch09-01-unrecoverable-errors-with-panic.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch09-01-unrecoverable-errors-with-panic::000::46cae0",
+          "file": "ch09-01-unrecoverable-errors-with-panic.md",
+          "heading_path": "Error Handling > Unrecoverable Errors with panic!",
+          "dense": 0.6871,
+          "bm25": 27.804,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch09-01-unrecoverable-errors-with-panic::001::621c83",
+          "file": "ch09-01-unrecoverable-errors-with-panic.md",
+          "heading_path": "Error Handling > Unrecoverable Errors with panic!",
+          "dense": 0.7175,
+          "bm25": 16.245,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch03-02-data-types::006::5095fd",
+          "file": "ch03-02-data-types.md",
+          "heading_path": "Common Programming Concepts > Data Types > Scalar Types > Integer Types",
+          "dense": 0.598,
+          "bm25": 9.628,
+          "fused": 0.02971
+        },
+        {
+          "chunk_id": "ch09-03-to-panic-or-not-to-panic::000::a4fa29",
+          "file": "ch09-03-to-panic-or-not-to-panic.md",
+          "heading_path": "Error Handling > To panic! or Not to panic!",
+          "dense": 0.645,
+          "bm25": 7.23,
+          "fused": 0.02932
+        }
+      ],
+      "retrieve_ms": 74.6,
+      "generate_ms": 2896.7
+    },
+    {
+      "id": "q18",
+      "question": "What does the ? operator do?",
+      "answerable": true,
+      "answer": "The ? operator is used to convert a value of a type compatible with the value the ? is used on into a value of a type that is compatible with the return type of the function. This is useful when a function returns one error type to represent all the ways a function might fail, even if parts might fail for many different reasons.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7876,
+      "key_facts": [
+        "err",
+        "return",
+        "ok"
+      ],
+      "key_facts_found": [
+        "err",
+        "return"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch09-02-recoverable-errors-with-result.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::015::8cebd2",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors > Where to Use the ? Operator",
+          "dense": 0.7876,
+          "bm25": 13.549,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::019::c95753",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors > Where to Use the ? Operator",
+          "dense": 0.7482,
+          "bm25": 13.476,
+          "fused": 0.03226
+        },
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::013::a15d46",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors > The ? Operator Shortcut",
+          "dense": 0.7441,
+          "bm25": 13.029,
+          "fused": 0.03126
+        },
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::012::6186f7",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors > The ? Operator Shortcut",
+          "dense": 0.7302,
+          "bm25": 13.194,
+          "fused": 0.03125
+        }
+      ],
+      "retrieve_ms": 71.2,
+      "generate_ms": 2955.0
+    },
+    {
+      "id": "q19",
+      "question": "How do I specify a trait bound on a generic function?",
+      "answerable": true,
+      "answer": "To specify a trait bound on a generic function, you can use the `where` clause after the function signature. For example, to specify that a generic function `notify` should use `Display` and `Summary` as trait bounds, you can write:\n\n```rust,ignore\npub fn notify<T: Summary + Display>(item: &T) {\n    println!(\"Breaking news! {}\", item.summarize());\n}\n```\n\nThis specifies that `T` must implement both `Summary` and `Display`, and that `T` must also implement `Summary + Display`.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8445,
+      "key_facts": [
+        "trait bound",
+        "<t:",
+        "where"
+      ],
+      "key_facts_found": [
+        "trait bound",
+        "<t:",
+        "where"
+      ],
+      "key_fact_coverage": 1.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch10-02-traits.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch10-02-traits::011::98674b",
+          "file": "ch10-02-traits.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Defining Shared Behavior with Traits > Using Traits as Parameters > Multiple Trait Bounds with the + Syntax",
+          "dense": 0.8089,
+          "bm25": 14.984,
+          "fused": 0.03178
+        },
+        {
+          "chunk_id": "ch20-03-advanced-types::011::da4b0c",
+          "file": "ch20-03-advanced-types.md",
+          "heading_path": "Advanced Features > Advanced Types > Dynamically Sized Types and the Sized Trait",
+          "dense": 0.8302,
+          "bm25": 12.899,
+          "fused": 0.03175
+        },
+        {
+          "chunk_id": "ch10-02-traits::010::91d196",
+          "file": "ch10-02-traits.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Defining Shared Behavior with Traits > Using Traits as Parameters > Trait Bound Syntax",
+          "dense": 0.8142,
+          "bm25": 12.724,
+          "fused": 0.03102
+        },
+        {
+          "chunk_id": "ch10-02-traits::012::69d005",
+          "file": "ch10-02-traits.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Defining Shared Behavior with Traits > Using Traits as Parameters > Clearer Trait Bounds with where Clauses",
+          "dense": 0.8445,
+          "bm25": 11.727,
+          "fused": 0.03089
+        }
+      ],
+      "retrieve_ms": 75.8,
+      "generate_ms": 3403.7
+    },
+    {
+      "id": "q20",
+      "question": "What are the lifetime elision rules?",
+      "answerable": true,
+      "answer": "The lifetime elision rules are:\n\n1. Each parameter gets its own lifetime.\n2. If there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters.\n3. If there are multiple input lifetime parameters, but one of them is `&self` or `&mut self` because this is a method, the lifetime of `self` is assigned to all output lifetime parameters.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.805,
+      "key_facts": [
+        "three rules",
+        "input lifetime",
+        "output lifetime",
+        "&self"
+      ],
+      "key_facts_found": [
+        "input lifetime",
+        "output lifetime",
+        "&self"
+      ],
+      "key_fact_coverage": 0.75,
+      "has_citation": false,
+      "gold_files": [
+        "ch10-03-lifetime-syntax.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::019::2335fd",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Lifetime Elision",
+          "dense": 0.805,
+          "bm25": 19.329,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::022::714643",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Lifetime Elision",
+          "dense": 0.7956,
+          "bm25": 17.405,
+          "fused": 0.03226
+        },
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::020::d5dfc4",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Lifetime Elision",
+          "dense": 0.7921,
+          "bm25": 15.245,
+          "fused": 0.0315
+        },
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::023::a79445",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > In Method Definitions",
+          "dense": 0.7431,
+          "bm25": 16.821,
+          "fused": 0.03102
+        }
+      ],
+      "retrieve_ms": 97.1,
+      "generate_ms": 3076.1
+    },
+    {
+      "id": "q21",
+      "question": "What does the 'static lifetime mean?",
+      "answerable": true,
+      "answer": "The 'static lifetime means that the affected reference can live for the entire duration of the program.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8022,
+      "key_facts": [
+        "'static",
+        "entire duration",
+        "string literals"
+      ],
+      "key_facts_found": [
+        "'static",
+        "entire duration"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch10-03-lifetime-syntax.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::025::2af4b9",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > The Static Lifetime",
+          "dense": 0.8022,
+          "bm25": 15.014,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::008::799ff5",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Lifetime Annotation Syntax",
+          "dense": 0.7005,
+          "bm25": 7.001,
+          "fused": 0.03016
+        },
+        {
+          "chunk_id": "ch20-01-unsafe-rust::017::234f4c",
+          "file": "ch20-01-unsafe-rust.md",
+          "heading_path": "Advanced Features > Unsafe Rust > Accessing or Modifying a Mutable Static Variable",
+          "dense": 0.6781,
+          "bm25": 12.295,
+          "fused": 0.02964
+        },
+        {
+          "chunk_id": "ch10-03-lifetime-syntax::020::d5dfc4",
+          "file": "ch10-03-lifetime-syntax.md",
+          "heading_path": "Generic Types, Traits, and Lifetimes > Validating References with Lifetimes > Lifetime Elision",
+          "dense": 0.6938,
+          "bm25": 6.601,
+          "fused": 0.0289
+        }
+      ],
+      "retrieve_ms": 78.0,
+      "generate_ms": 2537.7
+    },
+    {
+      "id": "q22",
+      "question": "How do I write a test function in Rust?",
+      "answerable": true,
+      "answer": "To write a test function in Rust, you need to follow these steps:\n\n1. Add the `#[test]` attribute to the function that you want to test.\n2. Write a test function that uses the `#[test]` attribute.\n3. Run the test function using the `cargo test` command.\n\nFor example, if you want to test the `add` function, you would write:\n\n```rust,noplayground\n#[cfg(test)]\nmod tests {\n    use super::*;\n\n    #[test]\n    fn it_works() {\n        let result = add(2, 2);\n        assert_eq!(result, 4);\n    }\n```\n\nThen, run `cargo test` to see if the test passes.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8873,
+      "key_facts": [
+        "#[test]",
+        "cargo test",
+        "assert"
+      ],
+      "key_facts_found": [
+        "#[test]",
+        "cargo test",
+        "assert"
+      ],
+      "key_fact_coverage": 1.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch11-01-writing-tests.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch11-01-writing-tests::001::4e81cc",
+          "file": "ch11-01-writing-tests.md",
+          "heading_path": "Writing Automated Tests > How to Write Tests > Structuring Test Functions",
+          "dense": 0.8873,
+          "bm25": 10.621,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch11-01-writing-tests::000::aa0df8",
+          "file": "ch11-01-writing-tests.md",
+          "heading_path": "Writing Automated Tests > How to Write Tests",
+          "dense": 0.8865,
+          "bm25": 9.63,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch11-01-writing-tests::002::ebe507",
+          "file": "ch11-01-writing-tests.md",
+          "heading_path": "Writing Automated Tests > How to Write Tests > Structuring Test Functions",
+          "dense": 0.833,
+          "bm25": 9.114,
+          "fused": 0.03078
+        },
+        {
+          "chunk_id": "ch11-01-writing-tests::004::cf77fa",
+          "file": "ch11-01-writing-tests.md",
+          "heading_path": "Writing Automated Tests > How to Write Tests > Structuring Test Functions",
+          "dense": 0.816,
+          "bm25": 9.508,
+          "fused": 0.03054
+        }
+      ],
+      "retrieve_ms": 86.2,
+      "generate_ms": 3696.8
+    },
+    {
+      "id": "q23",
+      "question": "How can I run tests one at a time instead of in parallel?",
+      "answerable": true,
+      "answer": "To run tests one at a time, you can use the `--test-threads` flag and specify the number of threads you want to use. For example, to run the tests one at a time with 1 thread, you can use the following command:\n\n```console\n$ cargo test -- --test-threads=1\n```",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8449,
+      "key_facts": [
+        "--test-threads=1",
+        "parallel",
+        "threads"
+      ],
+      "key_facts_found": [
+        "--test-threads=1",
+        "threads"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch11-02-running-tests.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch11-02-running-tests::001::f25bfa",
+          "file": "ch11-02-running-tests.md",
+          "heading_path": "Writing Automated Tests > Controlling How Tests Are Run > Running Tests in Parallel or Consecutively",
+          "dense": 0.8449,
+          "bm25": 20.077,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch11-02-running-tests::004::f68ef4",
+          "file": "ch11-02-running-tests.md",
+          "heading_path": "Writing Automated Tests > Controlling How Tests Are Run > Running a Subset of Tests by Name",
+          "dense": 0.7815,
+          "bm25": 12.635,
+          "fused": 0.03226
+        },
+        {
+          "chunk_id": "ch11-02-running-tests::000::e46b6c",
+          "file": "ch11-02-running-tests.md",
+          "heading_path": "Writing Automated Tests > Controlling How Tests Are Run",
+          "dense": 0.7264,
+          "bm25": 12.343,
+          "fused": 0.03126
+        },
+        {
+          "chunk_id": "ch11-02-running-tests::007::fa8c60",
+          "file": "ch11-02-running-tests.md",
+          "heading_path": "Writing Automated Tests > Controlling How Tests Are Run > Ignoring Tests Unless Specifically Requested",
+          "dense": 0.718,
+          "bm25": 10.313,
+          "fused": 0.03008
+        }
+      ],
+      "retrieve_ms": 94.4,
+      "generate_ms": 3011.7
+    },
+    {
+      "id": "q24",
+      "question": "What are the three Fn traits that closures can implement?",
+      "answerable": true,
+      "answer": "* `FnOnce`: A closure that can be called once.\n* `FnMut`: A closure that can be called multiple times.\n* `Fn`: A closure that can be called more than once without mutating its environment.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7916,
+      "key_facts": [
+        "fnonce",
+        "fnmut",
+        "fn"
+      ],
+      "key_facts_found": [
+        "fnonce",
+        "fnmut",
+        "fn"
+      ],
+      "key_fact_coverage": 1.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch13-01-closures.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch13-01-closures::014::2d97b9",
+          "file": "ch13-01-closures.md",
+          "heading_path": "Functional Language Features: Iterators and Closures > Closures > Moving Captured Values Out of Closures",
+          "dense": 0.7916,
+          "bm25": 13.775,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch20-04-advanced-functions-and-closures::006::1a792b",
+          "file": "ch20-04-advanced-functions-and-closures.md",
+          "heading_path": "Advanced Features > Advanced Functions and Closures > Returning Closures",
+          "dense": 0.7574,
+          "bm25": 9.451,
+          "fused": 0.0308
+        },
+        {
+          "chunk_id": "ch20-04-advanced-functions-and-closures::001::bf7572",
+          "file": "ch20-04-advanced-functions-and-closures.md",
+          "heading_path": "Advanced Features > Advanced Functions and Closures > Function Pointers",
+          "dense": 0.746,
+          "bm25": 13.244,
+          "fused": 0.03037
+        },
+        {
+          "chunk_id": "ch13-01-closures::015::a3596b",
+          "file": "ch13-01-closures.md",
+          "heading_path": "Functional Language Features: Iterators and Closures > Closures > Moving Captured Values Out of Closures",
+          "dense": 0.7372,
+          "bm25": 12.253,
+          "fused": 0.02991
+        }
+      ],
+      "retrieve_ms": 89.5,
+      "generate_ms": 2825.3
+    },
+    {
+      "id": "q25",
+      "question": "What does it mean that iterators are lazy?",
+      "answerable": true,
+      "answer": "Iterators are lazy because they do not consume the iterator. Instead, they produce new iterators by changing some aspect of the original iterator. This means that the iterator is not consumed until the new iterator is created.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8183,
+      "key_facts": [
+        "lazy",
+        "no effect",
+        "consume"
+      ],
+      "key_facts_found": [
+        "lazy",
+        "consume"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch13-02-iterators.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch13-02-iterators::005::15a9a3",
+          "file": "ch13-02-iterators.md",
+          "heading_path": "Functional Language Features: Iterators and Closures > Processing a Series of Items with Iterators > Methods That Produce Other Iterators",
+          "dense": 0.7692,
+          "bm25": 12.438,
+          "fused": 0.03227
+        },
+        {
+          "chunk_id": "ch13-02-iterators::006::dfddc0",
+          "file": "ch13-02-iterators.md",
+          "heading_path": "Functional Language Features: Iterators and Closures > Processing a Series of Items with Iterators > Methods That Produce Other Iterators",
+          "dense": 0.8022,
+          "bm25": 11.669,
+          "fused": 0.03226
+        },
+        {
+          "chunk_id": "ch13-04-performance::001::dd9290",
+          "file": "ch13-04-performance.md",
+          "heading_path": "Functional Language Features: Iterators and Closures > Performance in Loops vs. Iterators",
+          "dense": 0.7308,
+          "bm25": 9.612,
+          "fused": 0.02971
+        },
+        {
+          "chunk_id": "ch13-04-performance::000::e7d3b2",
+          "file": "ch13-04-performance.md",
+          "heading_path": "Functional Language Features: Iterators and Closures > Performance in Loops vs. Iterators",
+          "dense": 0.7442,
+          "bm25": 9.139,
+          "fused": 0.02964
+        }
+      ],
+      "retrieve_ms": 70.9,
+      "generate_ms": 2766.5
+    },
+    {
+      "id": "q26",
+      "question": "When should I use Box<T>?",
+      "answerable": true,
+      "answer": "When you have a type whose size can't be known at compile time, and you want to use a value of that type in a context that requires an exact size. When you have a large amount of data, and you want to transfer ownership but ensure that the data won't be copied when you do so. When you want to own a value, and you care only that it's a type that implements a particular trait rather than being of a specific type.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7648,
+      "key_facts": [
+        "heap",
+        "size",
+        "recursive"
+      ],
+      "key_facts_found": [
+        "size"
+      ],
+      "key_fact_coverage": 0.333,
+      "has_citation": false,
+      "gold_files": [
+        "ch15-01-box.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch15-02-deref::002::842795",
+          "file": "ch15-02-deref.md",
+          "heading_path": "Smart Pointers > Treating Smart Pointers Like Regular References > Using Box<T> Like a Reference",
+          "dense": 0.7385,
+          "bm25": 13.217,
+          "fused": 0.03227
+        },
+        {
+          "chunk_id": "ch15-01-box::002::b62227",
+          "file": "ch15-01-box.md",
+          "heading_path": "Smart Pointers > Using Box<T> to Point to Data on the Heap > Storing Data on the Heap",
+          "dense": 0.7648,
+          "bm25": 12.279,
+          "fused": 0.03178
+        },
+        {
+          "chunk_id": "ch15-01-box::010::36d13c",
+          "file": "ch15-01-box.md",
+          "heading_path": "Smart Pointers > Using Box<T> to Point to Data on the Heap > Enabling Recursive Types with Boxes > Getting a Recursive Type with a Known Size",
+          "dense": 0.7305,
+          "bm25": 12.86,
+          "fused": 0.03175
+        },
+        {
+          "chunk_id": "ch15-01-box::000::876e49",
+          "file": "ch15-01-box.md",
+          "heading_path": "Smart Pointers > Using Box<T> to Point to Data on the Heap",
+          "dense": 0.7491,
+          "bm25": 11.006,
+          "fused": 0.03128
+        }
+      ],
+      "retrieve_ms": 72.5,
+      "generate_ms": 3183.6
+    },
+    {
+      "id": "q27",
+      "question": "What is Rc<T> used for?",
+      "answerable": true,
+      "answer": "Rc<T> is a type that allows multiple parts of a program to share ownership of some data. It is used when we want to allocate some data on the heap for multiple parts of our program to read and we can't determine at compile time which part will finish using the data last. If we knew which part would finish using the data last, we could just make that part the data's owner, and the normal ownership rules enforced at compile time would take effect.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7845,
+      "key_facts": [
+        "reference counting",
+        "multiple owners",
+        "single-threaded"
+      ],
+      "key_facts_found": [],
+      "key_fact_coverage": 0.0,
+      "has_citation": false,
+      "gold_files": [
+        "ch15-04-rc.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch15-05-interior-mutability::016::f5a3f5",
+          "file": "ch15-05-interior-mutability.md",
+          "heading_path": "Smart Pointers > RefCell<T> and the Interior Mutability Pattern > Allowing Multiple Owners of Mutable Data",
+          "dense": 0.7112,
+          "bm25": 16.766,
+          "fused": 0.03178
+        },
+        {
+          "chunk_id": "ch15-04-rc::004::84f88a",
+          "file": "ch15-04-rc.md",
+          "heading_path": "Smart Pointers > Rc<T>, the Reference-Counted Smart Pointer > Sharing Data",
+          "dense": 0.7394,
+          "bm25": 13.687,
+          "fused": 0.03125
+        },
+        {
+          "chunk_id": "ch16-03-shared-state::009::40e6ea",
+          "file": "ch16-03-shared-state.md",
+          "heading_path": "Fearless Concurrency > Shared-State Concurrency > Controlling Access with Mutexes > Multiple Ownership with Multiple Threads",
+          "dense": 0.7633,
+          "bm25": 13.129,
+          "fused": 0.03105
+        },
+        {
+          "chunk_id": "ch15-04-rc::001::b3e19d",
+          "file": "ch15-04-rc.md",
+          "heading_path": "Smart Pointers > Rc<T>, the Reference-Counted Smart Pointer",
+          "dense": 0.7845,
+          "bm25": 12.911,
+          "fused": 0.03048
+        }
+      ],
+      "retrieve_ms": 67.7,
+      "generate_ms": 3204.0
+    },
+    {
+      "id": "q28",
+      "question": "How does RefCell<T> enforce the borrowing rules?",
+      "answerable": true,
+      "answer": "RefCell<T> enforces the borrowing rules at runtime by allowing only immutable borrows checked at compile time.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8477,
+      "key_facts": [
+        "runtime",
+        "borrow_mut",
+        "panic"
+      ],
+      "key_facts_found": [
+        "runtime"
+      ],
+      "key_fact_coverage": 0.333,
+      "has_citation": false,
+      "gold_files": [
+        "ch15-05-interior-mutability.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch15-05-interior-mutability::001::6c3676",
+          "file": "ch15-05-interior-mutability.md",
+          "heading_path": "Smart Pointers > RefCell<T> and the Interior Mutability Pattern > Enforcing Borrowing Rules at Runtime",
+          "dense": 0.8477,
+          "bm25": 26.918,
+          "fused": 0.03279
+        },
+        {
+          "chunk_id": "ch15-05-interior-mutability::002::758b5f",
+          "file": "ch15-05-interior-mutability.md",
+          "heading_path": "Smart Pointers > RefCell<T> and the Interior Mutability Pattern > Enforcing Borrowing Rules at Runtime",
+          "dense": 0.8283,
+          "bm25": 23.313,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch15-05-interior-mutability::004::543c32",
+          "file": "ch15-05-interior-mutability.md",
+          "heading_path": "Smart Pointers > RefCell<T> and the Interior Mutability Pattern > Using Interior Mutability",
+          "dense": 0.8249,
+          "bm25": 23.436,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch15-05-interior-mutability::003::7eadc3",
+          "file": "ch15-05-interior-mutability.md",
+          "heading_path": "Smart Pointers > RefCell<T> and the Interior Mutability Pattern > Enforcing Borrowing Rules at Runtime",
+          "dense": 0.8233,
+          "bm25": 22.97,
+          "fused": 0.03125
+        }
+      ],
+      "retrieve_ms": 72.3,
+      "generate_ms": 2520.7
+    },
+    {
+      "id": "q29",
+      "question": "How do I create a new thread and wait for it to finish?",
+      "answerable": true,
+      "answer": "To create a new thread and wait for it to finish, you can use the `thread::spawn` method. Here's an example:\n\n```rust\nuse std::thread;\nuse std::time::Duration;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        for i in 1..10 {\n            println!(\"hi number {i} from the spawned thread!\");\n            thread::sleep(Duration::from_millis(1));\n        }\n    });\n\n    for i in 1..5 {\n        println!(\"hi number {i} from the main thread!\");\n        thread::sleep(Duration::from_millis(1));\n    }\n\n    handle.join().unwrap();\n}\n```\n\nThis code creates a new thread and runs a loop that prints numbers from 1 to 10. After the loop, it waits for the thread to finish using the `join` method.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7517,
+      "key_facts": [
+        "thread::spawn",
+        "join",
+        "joinhandle"
+      ],
+      "key_facts_found": [
+        "thread::spawn",
+        "join"
+      ],
+      "key_fact_coverage": 0.667,
+      "has_citation": false,
+      "gold_files": [
+        "ch16-01-threads.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch16-01-threads::006::de1e33",
+          "file": "ch16-01-threads.md",
+          "heading_path": "Fearless Concurrency > Using Threads to Run Code Simultaneously > Waiting for All Threads to Finish",
+          "dense": 0.7517,
+          "bm25": 14.402,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch21-02-multithreaded::006::0009c4",
+          "file": "ch21-02-multithreaded.md",
+          "heading_path": "Final Project: Building a Multithreaded Web Server > From a Single-Threaded to a Multithreaded Server > Improving Throughput with a Thread Pool > Spawning a Thread for Each Request",
+          "dense": 0.7411,
+          "bm25": 14.469,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch21-02-multithreaded::017::7caedc",
+          "file": "ch21-02-multithreaded.md",
+          "heading_path": "Final Project: Building a Multithreaded Web Server > From a Single-Threaded to a Multithreaded Server > Improving Throughput with a Thread Pool > Sending Code from the ThreadPool to a Thread",
+          "dense": 0.7299,
+          "bm25": 11.27,
+          "fused": 0.03033
+        },
+        {
+          "chunk_id": "ch16-01-threads::004::3e0f5e",
+          "file": "ch16-01-threads.md",
+          "heading_path": "Fearless Concurrency > Using Threads to Run Code Simultaneously > Waiting for All Threads to Finish",
+          "dense": 0.7243,
+          "bm25": 12.632,
+          "fused": 0.03031
+        }
+      ],
+      "retrieve_ms": 79.2,
+      "generate_ms": 4005.0
+    },
+    {
+      "id": "q30",
+      "question": "How do I share a Mutex between multiple threads?",
+      "answerable": true,
+      "answer": "To share a Mutex between multiple threads, you can use the `Arc` and `Mutex` types provided by Rust. Here's how you can do it:\n\n1. **Create an `Arc` and `Mutex`:**\n   - Use `Arc` to create an `Arc<Mutex<T>>` to share ownership of the mutex.\n   - Use `Mutex` to ensure that only one thread can access the mutex at a time.\n\n2. **Create a `Worker` class:**\n   - Define a `Worker` class that takes an `id` and a `Mutex` instance as parameters.\n   - Clone the `Arc` to bump the reference count so that the `Worker` instances can share ownership of the mutex.\n\n3. **Create a `ThreadPool` class:**\n   - Implement the `new` method to create a new `ThreadPool` with a specified size.\n   - Use `Arc` and `Mutex` to share the `receiver` among the `Worker` instances.\n\n4. **Implement the `Worker` class:**\n   - Define a `new` method to create a new `Worker` instance.\n   - Clone the `Arc` to bump the reference count so that the `Worker` instances can share ownership of the mutex.\n\n5. **Implement the `ThreadPool` class:**\n   - Define a `new` method to create a new `ThreadPool` with a specified size.\n   - Use `Arc` and `Mutex` to share the `receiver` among the `Worker` instances.\n\nHere's the complete code:\n\n```rust\nuse std::sync::Arc;\nuse std::thread;\n\n#[derive(Debug)]\nstruct Worker {\n    id: usize,\n    receiver: Arc<Mutex<mpsc::Receiver<Job>>>,\n}\n\nimpl Worker {\n    fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {\n        Worker {\n            id,\n            receiver,\n        }\n    }\n}",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.8071,
+      "key_facts": [
+        "arc",
+        "mutex",
+        "lock",
+        "atomic"
+      ],
+      "key_facts_found": [
+        "arc",
+        "mutex"
+      ],
+      "key_fact_coverage": 0.5,
+      "has_citation": false,
+      "gold_files": [
+        "ch16-03-shared-state.md"
+      ],
+      "retrieved": [
+        {
+          "chunk_id": "ch16-03-shared-state::005::32d75c",
+          "file": "ch16-03-shared-state.md",
+          "heading_path": "Fearless Concurrency > Shared-State Concurrency > Controlling Access with Mutexes > Shared Access to Mutex<T>",
+          "dense": 0.8071,
+          "bm25": 18.778,
+          "fused": 0.03252
+        },
+        {
+          "chunk_id": "ch16-03-shared-state::007::7d7bb4",
+          "file": "ch16-03-shared-state.md",
+          "heading_path": "Fearless Concurrency > Shared-State Concurrency > Controlling Access with Mutexes > Multiple Ownership with Multiple Threads",
+          "dense": 0.774,
+          "bm25": 14.415,
+          "fused": 0.03151
+        },
+        {
+          "chunk_id": "ch21-02-multithreaded::024::ba4665",
+          "file": "ch21-02-multithreaded.md",
+          "heading_path": "Final Project: Building a Multithreaded Web Server > From a Single-Threaded to a Multithreaded Server > Improving Throughput with a Thread Pool > Sending Requests to Threads via Channels",
+          "dense": 0.7593,
+          "bm25": 19.54,
+          "fused": 0.03132
+        },
+        {
+          "chunk_id": "ch16-03-shared-state::001::f2733f",
+          "file": "ch16-03-shared-state.md",
+          "heading_path": "Fearless Concurrency > Shared-State Concurrency > Controlling Access with Mutexes",
+          "dense": 0.7738,
+          "bm25": 10.725,
+          "fused": 0.02976
+        }
+      ],
+      "retrieve_ms": 84.7,
+      "generate_ms": 6096.0
+    },
+    {
+      "id": "u01",
+      "question": "What is the capital of France?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.4569,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch08-02-strings::010::aa5af6",
+          "file": "ch08-02-strings.md",
+          "heading_path": "Common Collections > Storing UTF-8 Encoded Text with Strings > Indexing into Strings > Internal Representation",
+          "dense": 0.4189,
+          "bm25": 5.975,
+          "fused": 0.03041
+        },
+        {
+          "chunk_id": "appendix-06-translation::000::eaf2be",
+          "file": "appendix-06-translation.md",
+          "heading_path": "F - Translations of the Book > Appendix F: Translations of the Book",
+          "dense": 0.4569,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch12-05-working-with-environment-variables::002::97afd1",
+          "file": "ch12-05-working-with-environment-variables.md",
+          "heading_path": "An I/O Project: Building a Command Line Program > Working with Environment Variables > Writing a Failing Test for Case-Insensitive Search",
+          "dense": null,
+          "bm25": 6.576,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch06-02-match::004::779504",
+          "file": "ch06-02-match.md",
+          "heading_path": "Enums and Pattern Matching > The match Control Flow Construct > Patterns That Bind to Values",
+          "dense": 0.4361,
+          "bm25": null,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 36.2,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u02",
+      "question": "How do I write a list comprehension in Python?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.6854,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch01-02-hello-world::006::871c52",
+          "file": "ch01-02-hello-world.md",
+          "heading_path": "Getting Started > Hello, World! > Compilation and Execution",
+          "dense": null,
+          "bm25": 11.42,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch04-03-slices::002::d36472",
+          "file": "ch04-03-slices.md",
+          "heading_path": "Understanding Ownership > The Slice Type",
+          "dense": 0.6854,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch13-01-closures::009::8fbff1",
+          "file": "ch13-01-closures.md",
+          "heading_path": "Functional Language Features: Iterators and Closures > Closures > Capturing References or Moving Ownership",
+          "dense": null,
+          "bm25": 8.118,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "ch19-01-all-the-places-for-patterns::008::a95307",
+          "file": "ch19-01-all-the-places-for-patterns.md",
+          "heading_path": "Patterns and Matching > All the Places Patterns Can Be Used > for Loops",
+          "dense": 0.6622,
+          "bm25": null,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 49.6,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u03",
+      "question": "How does the useEffect hook work in React?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.6537,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::010::de2c38",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors",
+          "dense": 0.6537,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch20-05-macros::016::fc7d78",
+          "file": "ch20-05-macros.md",
+          "heading_path": "Advanced Features > Macros > Custom derive Macros",
+          "dense": null,
+          "bm25": 6.641,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::012::6186f7",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors > The ? Operator Shortcut",
+          "dense": null,
+          "bm25": 5.331,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "ch18-03-oo-design-patterns::014::1d1b08",
+          "file": "ch18-03-oo-design-patterns.md",
+          "heading_path": "Object Oriented Programming Features > Implementing an Object-Oriented Design Pattern > Attempting Traditional Object-Oriented Style > Adding approve to Change content's Behavior",
+          "dense": 0.6515,
+          "bm25": null,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 56.8,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u04",
+      "question": "Who won the 2018 FIFA World Cup?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.4644,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "appendix-05-editions::001::6b12f8",
+          "file": "appendix-05-editions.md",
+          "heading_path": "E - Editions > Appendix E: Editions",
+          "dense": null,
+          "bm25": 7.535,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch02-00-guessing-game-tutorial::009::8b3a6c",
+          "file": "ch02-00-guessing-game-tutorial.md",
+          "heading_path": "Programming a Guessing Game > Processing a Guess > Handling Potential Failure with Result",
+          "dense": 0.4644,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "appendix-02-operators::004::d54893",
+          "file": "appendix-02-operators.md",
+          "heading_path": "B - Operators and Symbols > Appendix B: Operators and Symbols > Operators",
+          "dense": 0.455,
+          "bm25": null,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "ch04-02-references-and-borrowing::002::b7643a",
+          "file": "ch04-02-references-and-borrowing.md",
+          "heading_path": "Understanding Ownership > References and Borrowing",
+          "dense": null,
+          "bm25": 7.369,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 64.4,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u05",
+      "question": "What is a good recipe for banana bread?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.4857,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree::012::d2074c",
+          "file": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "heading_path": "Packages, Crates, and Modules > Paths for Referring to an Item in the Module Tree > Making Structs and Enums Public",
+          "dense": 0.4555,
+          "bm25": 8.423,
+          "fused": 0.02921
+        },
+        {
+          "chunk_id": "ch12-04-testing-the-librarys-functionality::008::262d45",
+          "file": "ch12-04-testing-the-librarys-functionality.md",
+          "heading_path": "An I/O Project: Building a Command Line Program > Adding Functionality with Test-Driven Development > Writing Code to Pass the Test > Storing Matching Lines",
+          "dense": 0.4857,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree::013::451dc0",
+          "file": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "heading_path": "Packages, Crates, and Modules > Paths for Referring to an Item in the Module Tree > Making Structs and Enums Public",
+          "dense": 0.4804,
+          "bm25": null,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "foreword::000::d75340",
+          "file": "foreword.md",
+          "heading_path": "Foreword",
+          "dense": null,
+          "bm25": 7.947,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 55.8,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u06",
+      "question": "How do I run database migrations with the Diesel ORM and PostgreSQL?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.6282,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch12-03-improving-error-handling-and-modularity::019::62e1f8",
+          "file": "ch12-03-improving-error-handling-and-modularity.md",
+          "heading_path": "An I/O Project: Building a Command Line Program > Refactoring to Improve Modularity and Error Handling > Extracting Logic from main > Returning Errors from run",
+          "dense": 0.6257,
+          "bm25": 4.236,
+          "fused": 0.032
+        },
+        {
+          "chunk_id": "ch12-05-working-with-environment-variables::007::a32a79",
+          "file": "ch12-05-working-with-environment-variables.md",
+          "heading_path": "An I/O Project: Building a Command Line Program > Working with Environment Variables > Implementing the search_case_insensitive Function",
+          "dense": 0.6123,
+          "bm25": 4.172,
+          "fused": 0.02951
+        },
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::016::ce39b8",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors > Where to Use the ? Operator",
+          "dense": null,
+          "bm25": 4.682,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch12-01-accepting-command-line-arguments::000::2b395e",
+          "file": "ch12-01-accepting-command-line-arguments.md",
+          "heading_path": "An I/O Project: Building a Command Line Program > Accepting Command Line Arguments",
+          "dense": 0.6282,
+          "bm25": null,
+          "fused": 0.01639
+        }
+      ],
+      "retrieve_ms": 88.8,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u07",
+      "question": "How do I deploy an application with Kubernetes Helm charts?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.6536,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch14-02-publishing-to-crates-io::013::e5290c",
+          "file": "ch14-02-publishing-to-crates-io.md",
+          "heading_path": "More about Cargo and Crates.io > Publishing a Crate to Crates.io > Adding Metadata to a New Crate",
+          "dense": 0.6536,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch18-01-what-is-oo::001::012f6e",
+          "file": "ch18-01-what-is-oo.md",
+          "heading_path": "Object Oriented Programming Features > Characteristics of Object-Oriented Languages > Objects Contain Data and Behavior",
+          "dense": null,
+          "bm25": 7.801,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch14-02-publishing-to-crates-io::012::ef8e27",
+          "file": "ch14-02-publishing-to-crates-io.md",
+          "heading_path": "More about Cargo and Crates.io > Publishing a Crate to Crates.io > Adding Metadata to a New Crate",
+          "dense": 0.6522,
+          "bm25": null,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "ch21-01-single-threaded::007::7316f1",
+          "file": "ch21-01-single-threaded.md",
+          "heading_path": "Final Project: Building a Multithreaded Web Server > Building a Single-Threaded Web Server > Reading the Request",
+          "dense": null,
+          "bm25": 6.497,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 70.1,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u08",
+      "question": "How do I create a DataFrame with pandas?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.6289,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch08-02-strings::002::d7914a",
+          "file": "ch08-02-strings.md",
+          "heading_path": "Common Collections > Storing UTF-8 Encoded Text with Strings > Creating a New String",
+          "dense": 0.6289,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch20-03-advanced-types::005::4c1dbb",
+          "file": "ch20-03-advanced-types.md",
+          "heading_path": "Advanced Features > Advanced Types > The Never Type That Never Returns",
+          "dense": null,
+          "bm25": 4.878,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch03-02-data-types::014::b0fa8e",
+          "file": "ch03-02-data-types.md",
+          "heading_path": "Common Programming Concepts > Data Types > Compound Types > The Array Type",
+          "dense": 0.6281,
+          "bm25": null,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::017::8db119",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Memory and Allocation > Variables and Data Interacting with Move",
+          "dense": null,
+          "bm25": 4.644,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 58.8,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u09",
+      "question": "What is the boiling point of water at the top of Mount Everest?",
+      "answerable": false,
+      "answer": "I couldn't find this in the Rust Book.",
+      "refused": true,
+      "gate_refused": true,
+      "used_fallback": false,
+      "best_dense": 0.507,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch04-01-what-is-ownership::007::19e150",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership? > Variable Scope",
+          "dense": null,
+          "bm25": 11.155,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch21-01-single-threaded::005::20c506",
+          "file": "ch21-01-single-threaded.md",
+          "heading_path": "Final Project: Building a Multithreaded Web Server > Building a Single-Threaded Web Server > Reading the Request",
+          "dense": 0.507,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch04-01-what-is-ownership::001::b62a65",
+          "file": "ch04-01-what-is-ownership.md",
+          "heading_path": "Understanding Ownership > What Is Ownership?",
+          "dense": null,
+          "bm25": 7.279,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "ch21-01-single-threaded::010::e6c6c7",
+          "file": "ch21-01-single-threaded.md",
+          "heading_path": "Final Project: Building a Multithreaded Web Server > Building a Single-Threaded Web Server > Writing a Response",
+          "dense": 0.5024,
+          "bm25": null,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 92.4,
+      "generate_ms": 0.0
+    },
+    {
+      "id": "u10",
+      "question": "How do I declare a goroutine and a WaitGroup in Go?",
+      "answerable": false,
+      "answer": "To declare a goroutine and a WaitGroup in Go, you can use the `go` keyword followed by the name of the goroutine and the type of the WaitGroup. Here's an example:\n\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"time\"\n)\n\nfunc main() {\n\t// Define a goroutine\n\tgo func() {\n\t\tfmt.Println(\"Hello, world!\")\n\t}()\n\n\t// Define a WaitGroup\n\tvar wg sync.WaitGroup\n\n\t// Start the goroutine\n\tgo func() {\n\t\twg.Add(1)\n\t\tdefer wg.Done()\n\t\tfmt.Println(\"Hello, world!\")\n\t}()\n\n\t// Wait for the goroutine to finish\n\twg.Wait()\n}\n```\n\nIn this example, the `main` function defines a goroutine named `go func() { ... }` that prints \"Hello, world!\" to the console. The `wg` variable is a `sync.WaitGroup` that will wait for the `go` function to finish. The `wg.Add(1)` line adds a new goroutine to the WaitGroup, and the `wg.Done()` line signals the WaitGroup to stop waiting. Finally, the `wg.Wait()` line waits for the WaitGroup to finish.",
+      "refused": false,
+      "gate_refused": false,
+      "used_fallback": false,
+      "best_dense": 0.7076,
+      "key_facts": [],
+      "key_facts_found": [],
+      "key_fact_coverage": null,
+      "has_citation": false,
+      "gold_files": [],
+      "retrieved": [
+        {
+          "chunk_id": "ch07-04-bringing-paths-into-scope-with-the-use-keyword::002::343532",
+          "file": "ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "heading_path": "Packages, Crates, and Modules > Bringing Paths into Scope with the use Keyword > Creating Idiomatic use Paths",
+          "dense": 0.7076,
+          "bm25": null,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch20-01-unsafe-rust::020::9e2d3f",
+          "file": "ch20-01-unsafe-rust.md",
+          "heading_path": "Advanced Features > Unsafe Rust > Implementing an Unsafe Trait",
+          "dense": null,
+          "bm25": 7.819,
+          "fused": 0.01639
+        },
+        {
+          "chunk_id": "ch09-02-recoverable-errors-with-result::012::6186f7",
+          "file": "ch09-02-recoverable-errors-with-result.md",
+          "heading_path": "Error Handling > Recoverable Errors with Result > Propagating Errors > The ? Operator Shortcut",
+          "dense": null,
+          "bm25": 6.407,
+          "fused": 0.01613
+        },
+        {
+          "chunk_id": "ch17-03-more-futures::002::f21d97",
+          "file": "ch17-03-more-futures.md",
+          "heading_path": "Fundamentals of Asynchronous Programming: Async, Await, Futures, and Streams > Yielding Control to the Runtime",
+          "dense": 0.6977,
+          "bm25": null,
+          "fused": 0.01613
+        }
+      ],
+      "retrieve_ms": 53.2,
+      "generate_ms": 4716.0
+    }
+  ]
+}

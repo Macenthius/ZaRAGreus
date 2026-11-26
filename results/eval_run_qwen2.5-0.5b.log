@@ -1,0 +1,46 @@
+INFO rag.embeddings: Loading embedding model BAAI/bge-small-en-v1.5
+INFO rag.retrieval: Retriever ready: 1096 chunks
+INFO evaluate: dense  {'hit@1': 0.967, 'hit@3': 1.0, 'hit@5': 1.0, 'mrr@10': 0.983, 'n': 30}
+INFO evaluate: bm25   {'hit@1': 0.6, 'hit@3': 0.867, 'hit@5': 0.933, 'mrr@10': 0.737, 'n': 30}
+INFO evaluate: hybrid {'hit@1': 0.8, 'hit@3': 0.933, 'hit@5': 0.967, 'mrr@10': 0.879, 'n': 30}
+INFO evaluate: [1/40] q01 refused=False cov=1.0 2463ms
+INFO evaluate: [2/40] q02 refused=False cov=0.667 2427ms
+INFO evaluate: [3/40] q03 refused=False cov=0.333 2616ms
+INFO evaluate: [4/40] q04 refused=False cov=0.0 2515ms
+INFO evaluate: [5/40] q05 refused=False cov=0.667 2717ms
+INFO evaluate: [6/40] q06 refused=False cov=0.667 2603ms
+INFO evaluate: [7/40] q07 refused=False cov=0.333 2312ms
+INFO evaluate: [8/40] q08 refused=False cov=0.0 2545ms
+INFO evaluate: [9/40] q09 refused=False cov=0.333 2637ms
+INFO evaluate: [10/40] q10 refused=False cov=0.667 2496ms
+INFO evaluate: [11/40] q11 refused=False cov=0.667 2507ms
+INFO evaluate: [12/40] q12 refused=False cov=0.667 2561ms
+INFO evaluate: [13/40] q13 refused=False cov=1.0 3358ms
+INFO evaluate: [14/40] q14 refused=False cov=0.667 3003ms
+INFO evaluate: [15/40] q15 refused=False cov=0.333 3273ms
+INFO evaluate: [16/40] q16 refused=False cov=1.0 3375ms
+INFO evaluate: [17/40] q17 refused=False cov=0.75 2897ms
+INFO evaluate: [18/40] q18 refused=False cov=0.667 2955ms
+INFO evaluate: [19/40] q19 refused=False cov=1.0 3404ms
+INFO evaluate: [20/40] q20 refused=False cov=0.75 3076ms
+INFO evaluate: [21/40] q21 refused=False cov=0.667 2538ms
+INFO evaluate: [22/40] q22 refused=False cov=1.0 3697ms
+INFO evaluate: [23/40] q23 refused=False cov=0.667 3012ms
+INFO evaluate: [24/40] q24 refused=False cov=1.0 2825ms
+INFO evaluate: [25/40] q25 refused=False cov=0.667 2766ms
+INFO evaluate: [26/40] q26 refused=False cov=0.333 3184ms
+INFO evaluate: [27/40] q27 refused=False cov=0.0 3204ms
+INFO evaluate: [28/40] q28 refused=False cov=0.333 2521ms
+INFO evaluate: [29/40] q29 refused=False cov=0.667 4005ms
+INFO evaluate: [30/40] q30 refused=False cov=0.5 6096ms
+INFO evaluate: [31/40] u01 refused=True cov=None 0ms
+INFO evaluate: [32/40] u02 refused=True cov=None 0ms
+INFO evaluate: [33/40] u03 refused=True cov=None 0ms
+INFO evaluate: [34/40] u04 refused=True cov=None 0ms
+INFO evaluate: [35/40] u05 refused=True cov=None 0ms
+INFO evaluate: [36/40] u06 refused=True cov=None 0ms
+INFO evaluate: [37/40] u07 refused=True cov=None 0ms
+INFO evaluate: [38/40] u08 refused=True cov=None 0ms
+INFO evaluate: [39/40] u09 refused=True cov=None 0ms
+INFO evaluate: [40/40] u10 refused=False cov=None 4716ms
+INFO evaluate: Answer metrics: {'model': 'qwen2.5:0.5b', 'retrieval_mode': 'hybrid', 'top_k': 4, 'relevance_threshold': 0.7, 'n_answerable': 30, 'n_unanswerable': 10, 'key_fact_coverage_mean': 0.6, 'key_fact_coverage_mean_non_refused': 0.6, 'citation_rate_answerable_non_refused': 0.033, 'correct_refusal_rate': 0.9, 'correct_refusals_by_gate': 9, 'correct_refusals_by_llm': 0, 'false_refusal_rate': 0.0, 'fallback_used': 0, 'mean_retrieve_ms': 89.2, 'mean_generate_ms_when_generated': 3042.0, 'median_generate_ms_when_generated': 2825.3}

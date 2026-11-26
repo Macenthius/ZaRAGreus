@@ -1,3 +1,5 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- D:\Main\University\Final Year\IBM AI Analytics\ZaRAGreus\rust-book-rag\.venv\Scripts\python.exe
 cachedir: .pytest_cache
 rootdir: D:\Main\University\Final Year\IBM AI Analytics\ZaRAGreus\rust-book-rag
 plugins: anyio-4.16.0
@@ -22,4 +24,4 @@ tests/test_retrieval.py::test_rrf_ordering_toy_example PASSED            [ 88%]
 tests/test_retrieval.py::test_rrf_single_list_preserves_order PASSED     [ 94%]
 tests/test_retrieval.py::test_tokenizer_keeps_rust_identifiers PASSED    [100%]
 
-============================= 18 passed in 2.87s ==============================
+============================= 18 passed in 6.43s ==============================
