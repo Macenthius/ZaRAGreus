@@ -1,0 +1,18 @@
+{
+  "reviewer": "Claude (LLM-as-judge), not a human",
+  "author_spot_checked_rows": "N",
+  "model_under_review": "qwen2.5:0.5b (hybrid retrieval, top_k=4)",
+  "n_rows": 12,
+  "sample": "12 answerable questions sampled with random.Random(42) by scripts/evaluate.py",
+  "rubric": {
+    "correct": "1 = technically right and answers the question; 0.5 = partly right or missing a key point; 0 = wrong, off-topic or wrong refusal",
+    "grounded": "1 = every claim supported by the 4 retrieved chunks; 0 = any unsupported, distorted or spliced claim"
+  },
+  "citation_handling": "0 of 12 answers contain any [n] citation, so citation-number accuracy could not be checked; grounded was judged on claim support only. Under a strict reading that also requires correct citations, every row would score grounded = 0.",
+  "mean_correct": 0.5,
+  "mean_grounded": 0.417,
+  "count_correct_1": 4,
+  "count_correct_0_5": 4,
+  "count_correct_0": 4,
+  "answers_citing": []
+}
