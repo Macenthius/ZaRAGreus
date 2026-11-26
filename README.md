@@ -187,7 +187,7 @@ Worked examples with retrieved sources: `results/sample_outputs.md` (0.5b) and
   specifies it, but switching to dense or weighting RRF is the obvious next step.
 - **The gate threshold was tuned on the same 40 questions** used here, so the 0.90 / 0.00 refusal numbers are
   optimistic. The one missed refusal (u10, "goroutine and WaitGroup in Go", best similarity 0.7076) slipped
-  past the gate by 0.0024. Both models then ignored the prompt's refusal rule and wrote Go code from outside
+  past the gate by 0.0076. Both models then ignored the prompt's refusal rule and wrote Go code from outside
   knowledge. The LLM-level refusal never fired in either run, so in practice the gate does all the refusing.
 - **Citations are almost never produced.** Both small models ignore the "cite [n]" instruction. Only q15 cited.
   Sources are still shown in the UI for every answer, but in-text attribution would need a bigger model or

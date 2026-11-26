@@ -114,7 +114,7 @@ on 2026-11-26.
 - `--model qwen2.5:1.5b` took under 3 minutes in total, so it was run: coverage 0.72, the same citation and refusal numbers,
   median generate 3,124 ms.
 - Failure analysis: q04 and q08 are hybrid-retrieval misses (dense ranked a gold chunk first); u10 (a Go question) passed the
-  gate by 0.0024 and both models answered from outside knowledge. q27 is a lexical-metric false negative. The citation
+  gate by 0.0076 and both models answered from outside knowledge. q27 is a lexical-metric false negative. The citation
   instruction is ignored by both models.
 - pytest re-run: 18 passed. Headless Streamlit (AppTest) with Ollama up: correct streamed answer plus 4 sources, no
   exceptions (`results/streamlit_smoke_test.txt`).
