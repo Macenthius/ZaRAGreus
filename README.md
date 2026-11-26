@@ -193,23 +193,44 @@ Worked examples with retrieved sources: `results/sample_outputs.md` (0.5b) and
   Sources are still shown in the UI for every answer, but in-text attribution would need a bigger model or
   post-hoc citation matching.
 - **Key-fact coverage underestimates quality** for paraphrased answers. For example q27's 0.5b answer explains
-  Rc<T> shared ownership correctly but scores 0 because it never says "reference counting". The human review in
-  `results/manual_review.csv` is meant to catch this.
+  Rc<T> shared ownership correctly but scores 0 because it never says "reference counting". The LLM-assisted review
+  below (`results/llm_review.csv`) is a second, non-lexical check.
 - The 1.5b model improves coverage by 12 points for about 0.3 s more median generation time.
 
 **Tests and app:** 18/18 pytest tests pass (`results/pytest_output.txt`). A headless Streamlit run with Ollama
 up answered "What are the three rules of ownership?" correctly, with 4 sources, in 98 ms retrieve and
 2,276 ms generate (`results/streamlit_smoke_test.txt`, reproducible with `python scripts/smoke_test_app.py`).
 
-**Manual review:** `results/manual_review.csv` holds 12 randomly chosen (seed 42) answerable questions with
-empty `correct` / `grounded` columns for human grading.
+**LLM-assisted review** (`results/llm_review.csv`, summary in `results/llm_review_summary.json`):
+
+> **Graded by Claude (LLM-as-judge), not by a human. The author spot-checked N rows.**
+
+The 12 answerable questions sampled with seed 42 were graded on the qwen2.5:0.5b answers, against the 4 chunks
+actually retrieved for each one. `correct`: 1 = right and answers the question, 0.5 = partly right or missing a
+key point, 0 = wrong. `grounded`: 1 = every claim is supported by the retrieved chunks, 0 = anything unsupported,
+distorted or spliced.
+
+| metric | value |
+|---|---|
+| Mean correct | **0.50** (4 x 1, 4 x 0.5, 4 x 0) |
+| Mean grounded | **0.42** (5 / 12) |
+| Answers with any `[n]` citation | 0 / 12 |
+
+None of the 12 answers cited a passage, so whether citation numbers were correct could not be checked.
+`grounded` reflects claim support only. Under a strict reading that also requires correct citations,
+every row would be 0. This review is harsher than the lexical key-fact coverage (0.60). Several answers
+contain the expected words but are wrong or garbled. For example, q25 explains iterator *adapters* instead of
+laziness, and q18 describes only the error conversion performed by `?`.
 
 ## Limitations
 - The test set is small (40 questions) and was written by the developer; the threshold was tuned on it.
-- Key-fact coverage is a lexical proxy for correctness; `results/manual_review.csv` is for human judgement.
+- Key-fact coverage is a lexical proxy for correctness. The LLM-assisted review covers only 12 answers and
+  was graded by an LLM, not a human (spot-checked by the author).
 - `qwen2.5:0.5b` is very small: it rarely cites `[n]`, ignores the refusal rule, and trusts wrong passages.
 - Plain RRF underperforms dense-only here; weights are not tuned.
 - Token counts are estimated from word counts (x1.3), not from a real tokenizer.
+- Known ingest bug: 26 of 424 `<Listing>` tags have captions containing `>`, which leaks a caption fragment into
+  the chunk text (code is unaffected). It is left unfixed so the recorded results stay valid; see `docs/DEV_LOG.md`.
 - Single book only; no conversation memory.
 
 ## Future work

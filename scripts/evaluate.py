@@ -157,7 +157,12 @@ def write_samples(records: list[dict], path: Path, model: str) -> None:
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
-def write_manual_review(records: list[dict], path: Path) -> None:
+def write_review_sample(records: list[dict], path: Path) -> None:
+    """Write 12 random answerable questions with empty grading columns.
+
+    The graded copy (LLM-assisted review) lives in results/llm_review.csv; this file is
+    written separately so re-running the evaluation never overwrites those grades.
+    """
     rng = random.Random(42)
     sample = rng.sample([r for r in records if r["answerable"]], 12)
     with path.open("w", newline="", encoding="utf-8") as f:
@@ -203,7 +208,7 @@ def main() -> None:
     (res_dir / f"answer_metrics_{tag}.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     write_samples(records, res_dir / ("sample_outputs.md" if args.model == config.LLM_MODEL else f"sample_outputs_{tag}.md"), args.model)
     if args.model == config.LLM_MODEL:
-        write_manual_review(records, res_dir / "manual_review.csv")
+        write_review_sample(records, res_dir / "review_sample.csv")
     log.info("Answer metrics: %s", metrics)
 
 

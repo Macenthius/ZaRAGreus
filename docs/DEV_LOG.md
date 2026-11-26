@@ -118,3 +118,17 @@ on 2026-11-26.
   instruction is ignored by both models.
 - pytest re-run: 18 passed. Headless Streamlit (AppTest) with Ollama up: correct streamed answer plus 4 sources, no
   exceptions (`results/streamlit_smoke_test.txt`).
+
+## LLM-assisted review (after the evaluation)
+- The 12 sampled answerable questions (seed 42, qwen2.5:0.5b answers) were graded by Claude acting as an LLM judge,
+  not by a human, against the 4 chunks actually retrieved for each answer. Answers were not modified. The author is
+  to spot-check N rows. File renamed `manual_review.csv` -> `llm_review.csv`; `evaluate.py` now writes ungraded samples
+  to `review_sample.csv` so a re-run cannot overwrite the grades.
+- Result (`results/llm_review_summary.json`): mean correct 0.50 (4 x 1, 4 x 0.5, 4 x 0), mean grounded 0.42 (5/12),
+  0/12 answers contain an `[n]` citation (so citation accuracy could not be checked; grounded = claim support only).
+- The review is harsher than key-fact coverage (0.60): q25 describes iterator adapters instead of laziness, q05 invents a
+  mechanism ("Rust returns a valid reference"), q19 splices code from two listings, q29 misstates the loop range.
+- **Known ingest bug found while grading (not fixed, to keep recorded results valid):** `<Listing ... caption="...">`
+  tags whose caption contains `>` (e.g. ``JoinHandle<T>``) are cut at that `>` by the regex `<Listing([^>]*)>`, so a
+  fragment of the caption plus `">` leaks into the chunk text. Affects 26 of 424 listing tags; code blocks are intact.
+  Fix: match attributes with `<Listing((?:\s+[\w-]+="[^"]*")*)\s*>`, then rebuild the index and re-run the evaluation.
