@@ -103,5 +103,18 @@ on 2026-11-26.
 
 ## Phase 10: run and ship (status)
 - Done: venv, install, fetch, build index, threshold tuning, retrieval evaluation, ablation, pytest, Streamlit smoke test, git commits.
-- **Not done yet:** end-to-end answer evaluation (Ollama not installed). `git push` failed with
+- Earlier status (before Ollama was installed): answer evaluation pending; first `git push` failed with
   "Repository not found": the GitHub repository must be created (or access granted) first.
+
+## Phase 6b / 10: answer evaluation and ship (after Ollama was installed)
+- Ollama verified: `ollama list`, then a test `/api/chat` call. The first (cold) call took 99.9 s (35 s model load); a warm call took 4.5 s.
+- `python scripts/evaluate.py` (qwen2.5:0.5b, hybrid, top_k 4, gate 0.70): coverage 0.60, citation rate 0.033,
+  correct refusals 0.90 (all by the gate), false refusals 0.00, mean retrieve 89 ms, mean generate 3,042 ms. No code
+  bugs surfaced; questions and threshold were NOT changed after seeing answer results.
+- `--model qwen2.5:1.5b` took under 3 minutes in total, so it was run: coverage 0.72, the same citation and refusal numbers,
+  median generate 3,124 ms.
+- Failure analysis: q04 and q08 are hybrid-retrieval misses (dense ranked a gold chunk first); u10 (a Go question) passed the
+  gate by 0.0024 and both models answered from outside knowledge. q27 is a lexical-metric false negative. The citation
+  instruction is ignored by both models.
+- pytest re-run: 18 passed. Headless Streamlit (AppTest) with Ollama up: correct streamed answer plus 4 sources, no
+  exceptions (`results/streamlit_smoke_test.txt`).

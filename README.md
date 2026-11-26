@@ -159,17 +159,55 @@ Dense retrieval alone performed best on this set; RRF gives the weaker BM25 rank
 350 tokens gives the best dense MRR and near-best hybrid MRR. It also keeps 4 retrieved chunks
 (~1,100 tokens) well inside the 4,096-token context of the small LLM. 500-token chunks clearly hurt.
 
-**End-to-end answers:** *not yet run.* Ollama was not installed on the development machine when this
-README was written, so there are no LLM answer metrics yet. Run `python scripts/evaluate.py` after
-installing Ollama to produce `results/answer_metrics_qwen2.5-0.5b.json`, `results/sample_outputs.md`
-and `results/manual_review.csv`.
+**End-to-end answers** (hybrid retrieval, top_k = 4, gate 0.70; 30 answerable + 10 unanswerable questions;
+`results/answer_metrics_*.json`, full answers in `results/answers_*.json`):
 
-<!-- ANSWER_RESULTS -->
+| metric | qwen2.5:0.5b (default) | qwen2.5:1.5b |
+|---|---|---|
+| Key-fact coverage, mean over 30 answerable | **0.60** | **0.72** |
+| Answerable questions with all key facts | 6 / 30 | 12 / 30 |
+| Citation rate (answers containing `[n]`) | 0.033 (1 / 30) | 0.033 (1 / 30) |
+| Correct-refusal rate (10 unanswerable) | 0.90 (9 by gate, 0 by LLM) | 0.90 (9 by gate, 0 by LLM) |
+| False-refusal rate (30 answerable) | 0.00 | 0.00 |
+| Extractive fallback used | 0 | 0 |
+| Mean retrieve latency | 89 ms | 69 ms |
+| Mean / median generate latency | 3,042 / 2,825 ms | 3,540 / 3,124 ms |
+
+Latency is measured on the development laptop. The 1.5b mean includes an 11.5 s cold model load on the first
+question, which is why the median is the fairer figure. Both runs took under 3 minutes in total.
+Worked examples with retrieved sources: `results/sample_outputs.md` (0.5b) and
+`results/sample_outputs_qwen2.5-1.5b.md`.
+
+**Observations**
+- **Dense beat hybrid.** Dense-only retrieval scores MRR 0.983 against 0.879 for RRF hybrid. Plain RRF gives the
+  weaker BM25 ranking equal weight. Two of the three zero-coverage 0.5b answers (q04 "rules of references" and q08
+  "method vs associated function") are *retrieval* failures: hybrid put no gold-chapter chunk in the top 4,
+  while dense had one at rank 1. The model then answered confidently from the wrong passages (for example it called
+  the rules of references "the Lifetime Elision Rules"). Hybrid is still the default because the brief
+  specifies it, but switching to dense or weighting RRF is the obvious next step.
+- **The gate threshold was tuned on the same 40 questions** used here, so the 0.90 / 0.00 refusal numbers are
+  optimistic. The one missed refusal (u10, "goroutine and WaitGroup in Go", best similarity 0.7076) slipped
+  past the gate by 0.0024. Both models then ignored the prompt's refusal rule and wrote Go code from outside
+  knowledge. The LLM-level refusal never fired in either run, so in practice the gate does all the refusing.
+- **Citations are almost never produced.** Both small models ignore the "cite [n]" instruction. Only q15 cited.
+  Sources are still shown in the UI for every answer, but in-text attribution would need a bigger model or
+  post-hoc citation matching.
+- **Key-fact coverage underestimates quality** for paraphrased answers. For example q27's 0.5b answer explains
+  Rc<T> shared ownership correctly but scores 0 because it never says "reference counting". The human review in
+  `results/manual_review.csv` is meant to catch this.
+- The 1.5b model improves coverage by 12 points for about 0.3 s more median generation time.
+
+**Tests and app:** 18/18 pytest tests pass (`results/pytest_output.txt`). A headless Streamlit run with Ollama
+up answered "What are the three rules of ownership?" correctly, with 4 sources, in 98 ms retrieve and
+2,276 ms generate (`results/streamlit_smoke_test.txt`, reproducible with `python scripts/smoke_test_app.py`).
+
+**Manual review:** `results/manual_review.csv` holds 12 randomly chosen (seed 42) answerable questions with
+empty `correct` / `grounded` columns for human grading.
 
 ## Limitations
 - The test set is small (40 questions) and was written by the developer; the threshold was tuned on it.
 - Key-fact coverage is a lexical proxy for correctness; `results/manual_review.csv` is for human judgement.
-- `qwen2.5:0.5b` is very small: it can paraphrase loosely, miss citations, or miss refusals.
+- `qwen2.5:0.5b` is very small: it rarely cites `[n]`, ignores the refusal rule, and trusts wrong passages.
 - Plain RRF underperforms dense-only here; weights are not tuned.
 - Token counts are estimated from word counts (x1.3), not from a real tokenizer.
 - Single book only; no conversation memory.
