@@ -1,0 +1,10 @@
+{
+  "source_repo": "https://github.com/rust-lang/book",
+  "commit_sha": "c976903459e37407cfa6964530ea3469957b3549",
+  "markdown_files": 112,
+  "indexed_markdown_files": 111,
+  "listing_files_copied": 669,
+  "total_words": 182303,
+  "fetch_date": "2026-11-26",
+  "licence": "MIT OR Apache-2.0"
+}
